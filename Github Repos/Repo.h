@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface Repo : NSObject
-
+@property (nonatomic) NSString *name;
+-(instancetype)initWithName:(NSString *)name;
 @end

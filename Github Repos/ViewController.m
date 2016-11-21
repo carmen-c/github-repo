@@ -40,11 +40,12 @@
             NSLog(@"jsonError: %@", jsonError.localizedDescription);
             return;
         }
-       
+        
         for (NSDictionary *repo in repos) {
         NSString *repoName = repo[@"name"];
-        [self.names addObject:repoName];
-        NSLog(@"repo: %@", repoName);
+        Repo *repo = [[Repo alloc]initWithName:repoName];
+        [self.names addObject:repo];
+        //NSLog(@"repo: %@", repoName);
         }
         
         
@@ -67,7 +68,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    cell.textLabel.text = [self.names objectAtIndex:indexPath.row];
+    Repo *repo = self.names[indexPath.row];
+    cell.textLabel.text = repo.name;
     return cell;
 }
 
